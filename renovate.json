@@ -1,5 +1,6 @@
 {
-  "extends": [
-    "config:base"
-  ]
+  "extends": ["config:base", ":assignAndReview(kriese)", "docker:enableMajor"],
+  "pinDigests": true,
+  "semanticCommits": true,
+  "prCreation":  "not-pending"
 }
