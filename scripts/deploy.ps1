@@ -24,10 +24,10 @@ docker tag jira "$($image)"
 docker push "$($image)"
 
 
-if (! (Test-Path Env:\APPVEYOR_REPO_TAG_NAME)) {
+if ($env:APPVEYOR_REPO_TAG -ne "true") {
   Write-Host "No version tag detected. Skip publishing."
   exit 0
 }
 
-docker tag jira "$($image):$env:APPVEYOR_REPO_TAG_NAME"
-docker push "$($image):$env:APPVEYOR_REPO_TAG_NAME"
+docker tag jira "$($image):${env:APPVEYOR_BUILD_VERSION}"
+docker push "$($image):${env:APPVEYOR_BUILD_VERSION}"
