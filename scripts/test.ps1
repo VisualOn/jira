@@ -9,6 +9,8 @@ Write-Host Starting container
 docker run --name jiratest -p 8080:8080 -d jira
 Start-Sleep 10
 
+docker exec -t jiratest java --version
+
 docker logs jiratest
 
 $ErrorActionPreference = 'SilentlyContinue';
