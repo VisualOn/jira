@@ -16,7 +16,12 @@ image: ubuntu
 stack: docker
 
 init:
-  - ps: ./scripts/init.ps1
+- git config --global core.autocrlf true
+- ps: >-
+    if ($env:APPVEYOR_REPO_TAG -eq "true")
+    {
+        Update-AppveyorBuild -Version ($env:APPVEYOR_REPO_TAG_NAME).TrimStart("v")
+    }
 
 build_script:
   - ps: ./scripts/build.ps1
