@@ -7,7 +7,7 @@ ENV JIRA_VERSION  8.0.2
 
 # Install Atlassian JIRA and helper tools and setup initial home
 # directory structure.
-RUN set -x \
+RUN set -eux \
     && apk add --no-cache curl xmlstarlet bash ttf-dejavu \
     && mkdir -p                "${JIRA_HOME}" \
     && mkdir -p                "${JIRA_HOME}/caches/indexes" \
