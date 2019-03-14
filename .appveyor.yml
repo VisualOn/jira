@@ -18,6 +18,10 @@ init:
   - git config --global core.autocrlf true
 
 build_script:
-  - docker build .
+  - ps: ./scripts/build.ps1
 
-test: off
+test_script:
+  - ps: ./scripts/test.ps1
+
+deploy_script:
+  - ps: ./scripts/deploy.ps1
