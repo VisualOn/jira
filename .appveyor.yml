@@ -1,8 +1,9 @@
 pull_requests:
   do_not_increment_build_number: true
 
+
 skip_tags: false
-max_jobs: 1
+skip_branch_with_pr: true
 skip_commits:
   files:
     - README.md
@@ -11,6 +12,8 @@ skip_commits:
     - .gitignore
     - renovate.json
 
+
+max_jobs: 1
 
 image: ubuntu
 stack: docker
@@ -29,5 +32,12 @@ build_script:
 test_script:
   - ps: ./scripts/test.ps1
 
-deploy_script:
-  - ps: ./scripts/deploy.ps1
+for:
+
+-
+  branches:
+    only:
+      - master
+      - /v\d*\.\d*\.\d*/
+  deploy_script:
+    - ps: ./scripts/deploy.ps1
