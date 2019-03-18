@@ -5,6 +5,9 @@ ENV JIRA_HOME     /var/atlassian/jira
 ENV JIRA_INSTALL  /opt/atlassian/jira
 ENV JIRA_VERSION  8.0.2
 
+# Default to UTF-8 file.encoding
+ENV LANG C.UTF-8
+
 # Install Atlassian JIRA and helper tools and setup initial home
 # directory structure.
 RUN set -eux \
