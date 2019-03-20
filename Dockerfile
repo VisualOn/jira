@@ -27,7 +27,7 @@ RUN set -eux \
     && chown -R daemon:daemon  "${JIRA_HOME}" \
     && mkdir -p                "${JIRA_INSTALL}/conf/Catalina" \
     && curl -Ls                "https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-software-${JIRA_VERSION}.tar.gz" | tar -xz --directory "${JIRA_INSTALL}" --strip-components=1 --no-same-owner \
-    && curl -Ls                "https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-${MYSQL_VERSION}.tar.gz" | tar -xz --directory "${JIRA_INSTALL}/lib" --strip-components=1 --no-same-owner --wildcards "*-${MYSQL_VERSION}.jar" \
+    && curl -Ls                "https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-${MYSQL_VERSION}.tar.gz" | tar -xz --directory "${JIRA_INSTALL}/lib" --strip-components=1 --no-same-owner "mysql-connector-java-${MYSQL_VERSION}/mysql-connector-java-${MYSQL_VERSION}.jar" \
     && find                    "${JIRA_INSTALL}/lib" -name "postgresql-9*" -delete \
     && curl -Ls                "https://jdbc.postgresql.org/download/postgresql-${POSTGRES_VERSION}.jar" -o "${JIRA_INSTALL}/lib/postgresql-${POSTGRES_VERSION}.jar" \
     && chmod -R 700            "${JIRA_INSTALL}/conf" \
