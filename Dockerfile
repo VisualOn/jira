@@ -15,7 +15,6 @@ RUN set -eux \
         curl \
         xmlstarlet \
         bash \
-        fontconfig \
         ttf-dejavu \
     && mkdir -p                "${JIRA_HOME}" \
     && mkdir -p                "${JIRA_HOME}/caches/indexes" \
