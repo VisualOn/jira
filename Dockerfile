@@ -4,6 +4,8 @@ FROM adoptopenjdk/openjdk8:alpine@sha256:15c8f927d1ecc9b6945370032774d206cf22ae8
 ENV JIRA_HOME     /var/atlassian/jira
 ENV JIRA_INSTALL  /opt/atlassian/jira
 ENV JIRA_VERSION  8.0.2
+ENV MYSQL_VERSION 8.0.15
+ENV POSTGRES_VERSION 42.2.5
 
 # Default to UTF-8 file.encoding
 ENV LANG C.UTF-8
@@ -22,9 +24,9 @@ RUN set -eux \
     && chown -R daemon:daemon  "${JIRA_HOME}" \
     && mkdir -p                "${JIRA_INSTALL}/conf/Catalina" \
     && curl -Ls                "https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-software-${JIRA_VERSION}.tar.gz" | tar -xz --directory "${JIRA_INSTALL}" --strip-components=1 --no-same-owner \
-    && curl -Ls                "https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.38.tar.gz" | tar -xz --directory "${JIRA_INSTALL}/lib" --strip-components=1 --no-same-owner "mysql-connector-java-5.1.38/mysql-connector-java-5.1.38-bin.jar" \
-    && rm -f                   "${JIRA_INSTALL}/lib/postgresql-9*" \
-    && curl -Ls                "https://jdbc.postgresql.org/download/postgresql-42.2.1.jar" -o "${JIRA_INSTALL}/lib/postgresql-42.2.1.jar" \
+    && curl -Ls                "https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-${MYSQL_VERSION}.tar.gz" | tar -xz --directory "${JIRA_INSTALL}/lib" --strip-components=1 --no-same-owner --wildcards "*-${MYSQL_VERSION}.jar" \
+    && find                    "${JIRA_INSTALL}/lib" -name "postgresql-9*" -delete \
+    && curl -Ls                "https://jdbc.postgresql.org/download/postgresql-${POSTGRES_VERSION}.jar" -o "${JIRA_INSTALL}/lib/postgresql-${POSTGRES_VERSION}.jar" \
     && chmod -R 700            "${JIRA_INSTALL}/conf" \
     && chmod -R 700            "${JIRA_INSTALL}/logs" \
     && chmod -R 700            "${JIRA_INSTALL}/temp" \
