@@ -7,6 +7,9 @@ ENV JIRA_VERSION  8.0.2
 ENV MYSQL_VERSION 8.0.15
 ENV POSTGRES_VERSION 42.2.5
 
+# add java to path
+ENV PATH "/opt/java/openjdk/bin:$PATH"
+
 # Default to UTF-8 file.encoding
 ENV LANG C.UTF-8
 
