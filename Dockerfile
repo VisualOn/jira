@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk8:alpine@sha256:b87f795ea6b4bc02055412dc0134f7a588185dfaf267dc4c06a6007bc537357c
+FROM adoptopenjdk/openjdk8:alpine@sha256:2a47a103deb569b67d3d8e5118971f301dc9f345e8b54dc3d9d81898627c01b1
 
 # Configuration variables.
 ENV JIRA_HOME     /var/atlassian/jira
