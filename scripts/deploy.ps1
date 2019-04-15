@@ -29,5 +29,7 @@ if ($env:APPVEYOR_REPO_TAG -ne "true") {
   exit 0
 }
 
-docker tag jira "$($image):${env:APPVEYOR_BUILD_VERSION}"
-docker push "$($image):${env:APPVEYOR_BUILD_VERSION}"
+$version = ($env:APPVEYOR_REPO_TAG_NAME).TrimStart("v")
+
+docker tag jira "$($image):${version}"
+docker push "$($image):${version}"
