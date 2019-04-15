@@ -1,3 +1,5 @@
+FROM cptactionhank/atlassian-jira-software:8.0.1@sha256:3c54eb71308803d01f6941ad0a1a7b4a6c11710b18e6892f1be91530df1130c6
+
 FROM adoptopenjdk/openjdk8:alpine@sha256:fbd06be7d90581285435376080c197033ba83a599d2783665c808655f0ff3c0b
 
 # Configuration variables.
