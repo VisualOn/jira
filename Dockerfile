@@ -1,6 +1,6 @@
 FROM cptactionhank/atlassian-jira-software:8.0.2@sha256:a4bda2f4a5d1b9a5c9a633266bc21ee639fe6f6e53ee10e2b667a18222d8a7f5
 
-FROM adoptopenjdk/openjdk8:alpine@sha256:e251b7db3a4d1d0f816e89ab0a858d9a646538f80f64c2524813832d02b97029
+FROM adoptopenjdk/openjdk8
 
 # Configuration variables.
 ENV JIRA_HOME     /var/atlassian/jira
@@ -18,11 +18,13 @@ ENV LANG C.UTF-8
 # Install Atlassian JIRA and helper tools and setup initial home
 # directory structure.
 RUN set -eux \
-    && apk add --no-cache \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends \
         curl \
+        ca-certificates \
         xmlstarlet \
         bash \
-        ttf-dejavu \
+        fontconfig \
     && mkdir -p                "${JIRA_HOME}" \
     && mkdir -p                "${JIRA_HOME}/caches/indexes" \
     && chmod -R 700            "${JIRA_HOME}" \
@@ -42,7 +44,8 @@ RUN set -eux \
     && chown -R daemon:daemon  "${JIRA_INSTALL}/work" \
     && sed --in-place          "s/java version/openjdk version/g" "${JIRA_INSTALL}/bin/check-java.sh" \
     && echo -e                 "\njira.home=$JIRA_HOME" >> "${JIRA_INSTALL}/atlassian-jira/WEB-INF/classes/jira-application.properties" \
-    && touch -d "@0"           "${JIRA_INSTALL}/conf/server.xml"
+    && touch -d "@0"           "${JIRA_INSTALL}/conf/server.xml" \
+    && rm -rf                   /var/lib/apt/lists/*
 
 # Use the default unprivileged account. This could be considered bad practice
 # on systems where multiple processes end up being executed by 'daemon' but
