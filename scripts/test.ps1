@@ -11,8 +11,13 @@ Start-Sleep 20
 
 docker exec -t jiratest java -version
 
-Invoke-WebRequest http://localhost:8080
-
+try {
+    Invoke-WebRequest -Uri http://localhost:8080 -RetryIntervalSec 5 -MaximumRetryCount 3
+}
+catch {
+    $_.Exception.Response
+    throw
+}
 docker logs jiratest
 
 $ErrorActionPreference = 'SilentlyContinue';
