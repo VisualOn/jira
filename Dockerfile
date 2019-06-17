@@ -5,8 +5,8 @@ FROM adoptopenjdk/openjdk8@sha256:c840525bce5515d6d8441d065b26121a1f43f460ba32de
 # Configuration variables.
 ENV JIRA_HOME     /var/atlassian/jira
 ENV JIRA_INSTALL  /opt/atlassian/jira
-ENV JIRA_VERSION  8.1.0
-ENV MYSQL_VERSION 8.0.15
+ENV JIRA_VERSION  8.2.2
+ENV MYSQL_VERSION 8.0.16
 ENV POSTGRES_VERSION 42.2.5
 
 # add java to path
