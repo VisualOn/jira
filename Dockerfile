@@ -1,6 +1,6 @@
 FROM cptactionhank/atlassian-jira-software:8.1.0@sha256:d22a123d5b9e45fb7338db171ffbb318efb593cef9ad72c359f7e0f028797bff
 
-FROM adoptopenjdk/openjdk8@sha256:0892b79180bff9820634307d4748b084af8efc279237c5a8624e7ab6d6216aac
+FROM adoptopenjdk/openjdk8@sha256:77fbb6c1c89afcbf425eea5113fc82cb2c9c60e3b20d73b13f9e4f53479544db
 
 # Configuration variables.
 ENV JIRA_HOME     /var/atlassian/jira
