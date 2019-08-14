@@ -7,7 +7,7 @@ ENV JIRA_HOME     /var/atlassian/jira
 ENV JIRA_INSTALL  /opt/atlassian/jira
 ENV JIRA_VERSION  8.3.2
 ENV MYSQL_VERSION 8.0.17
-ENV POSTGRES_VERSION 42.2.5
+ENV POSTGRES_VERSION 42.2.6
 
 # add java to path
 ENV PATH "/opt/java/openjdk/bin:$PATH"
