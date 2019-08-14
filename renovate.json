@@ -1,5 +1,5 @@
 {
-  "extends": ["config:base", ":assignAndReview(viceice)", "docker:enableMajor"],
+  "extends": ["config:base", ":assignAndReview(viceice)", "docker:enableMajor", ":masterIssue"],
   "pinDigests": true,
   "semanticCommits": true,
   "prCreation":  "not-pending"
