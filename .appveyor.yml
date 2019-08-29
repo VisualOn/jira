@@ -31,7 +31,6 @@ for:
 -
   branches:
     only:
-    - master
     - /v\d*\.\d*\.\d*/
   deploy_script:
   - ps: ./scripts/deploy.ps1
