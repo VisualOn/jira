@@ -1,6 +1,12 @@
 FROM cptactionhank/atlassian-jira-software:8.1.0@sha256:d22a123d5b9e45fb7338db171ffbb318efb593cef9ad72c359f7e0f028797bff
 
 FROM adoptopenjdk/openjdk8@sha256:3db7a97f46a2393426935c5bf4dcf7e57b1f278f249ab29f84ac8c2ddddff2d7
+LABEL \
+    maintainer="Michael Kriese <michael.kriese@visualon.de>" \
+    org.opencontainers.image.title="JIRA Software" \
+    org.opencontainers.image.authors="Michael Kriese <michael.kriese@visualon.de>" \
+    org.opencontainers.image.source="https://github.com/VisualOn/jira" \
+    org.opencontainers.image.url="https://www.atlassian.com/software/jira"
 
 # Configuration variables.
 ENV JIRA_HOME     /var/atlassian/jira
@@ -68,3 +74,10 @@ ENTRYPOINT ["/docker-entrypoint.sh"]
 
 # Run Atlassian JIRA as a foreground process by default.
 CMD ["/opt/atlassian/jira/bin/start-jira.sh", "-fg"]
+
+ARG DOCKER_TAG
+ARG SOURCE_COMMIT
+
+LABEL \
+    org.opencontainers.image.version="$DOCKER_TAG" \
+    org.opencontainers.image.revision="$SOURCE_COMMIT"
