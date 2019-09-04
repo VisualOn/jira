@@ -1,6 +1,6 @@
 FROM cptactionhank/atlassian-jira-software:8.1.0@sha256:d22a123d5b9e45fb7338db171ffbb318efb593cef9ad72c359f7e0f028797bff
 
-FROM adoptopenjdk/openjdk8@sha256:1d003a892e52fdbc69ec6d813ae4db681439663317f098d5c1b514f1ff5480ef
+FROM adoptopenjdk/openjdk8@sha256:42befed9debfd52ff7a9f739eec9cb4d91361510fead3d2b34fa00475e0632bb
 LABEL \
     maintainer="Michael Kriese <michael.kriese@visualon.de>" \
     org.opencontainers.image.title="JIRA Software" \
